@@ -1,3 +1,3 @@
-A Pen created at CodePen.io. You can find this one at http://codepen.io/JonasBadalic/pen/dPyGWw.
+A Pen created at CodePen.io. You can find this one at http://codepen.io/motorlatitude/pen/JFkro.
 
- A login form UI with some simple css transitions.
+ Just playing around with login forms
