@@ -1,12 +1,5 @@
-A Pen created at CodePen.io. You can find this one at http://codepen.io/innerstorm/pen/nagFi.
+A Pen created at CodePen.io. You can find this one at http://codepen.io/ravinthranath/pen/GggyrP.
 
- Best viewed in Chrome.
+ A simple sky with animated clouds moving around. Simple parralax effect achieved using variable speed and opacity for the clouds. Can be used in websites, games, etc. 
 
-Design is from Bojana Cakic's dribbble shot.
-http://dribbble.com/shots/911652-Transparent-organic-form
-
-* background image is from lorempixel.com,
-* icons are from Bojana's psd, embedded in css.
-* Helvetica is replaced with Open Sans Condensed
-
-Hope you like it :)
+we used cloud animation with login form.. developing that for something different and latest one..
