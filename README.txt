@@ -1,5 +1,5 @@
-A Pen created at CodePen.io. You can find this one at http://codepen.io/ravinthranath/pen/GggyrP.
+A Pen created at CodePen.io. You can find this one at http://codepen.io/suez/pen/dPqxoM.
 
- A simple sky with animated clouds moving around. Simple parralax effect achieved using variable speed and opacity for the clouds. Can be used in websites, games, etc. 
+ Based on this - https://dribbble.com/shots/1945593-Login-Home-Screen
 
-we used cloud animation with login form.. developing that for something different and latest one..
+Right now svg-icons not appears in IE (css animation). All 4 icons are hardcoded with numbers, just for fun :D
