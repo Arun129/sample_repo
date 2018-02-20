@@ -4,4 +4,4 @@ RUN powershell -Command Install-WindowsFeature -name Web-Server -IncludeManageme
 ENV ACCEPT_EULA=Y
 RUN powershell New-Website -Name "test" -PhysicalPath "c:\inetpub\wwwroot" -Port "80" -ApplicationPool DefaultAppPool
 
-ADD service\ c:\inetpub\wwwroot
+ADD service\ "c:\inetpub\wwwroot"
