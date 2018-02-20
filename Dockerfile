@@ -1,7 +1,16 @@
-FROM microsoft/mssql-server-windows-express
-RUN powershell -Command Install-WindowsFeature -name Web-Server -IncludeManagementTools
+# Sample Dockerfile
 
-ENV ACCEPT_EULA=Y
-RUN powershell New-Website -Name "test" -PhysicalPath "c:\inetpub\wwwroot" -Port "80" -ApplicationPool DefaultAppPool
+# Indicates that the windowsservercore image will be used as the base image.
+FROM microsoft/windowsservercore
 
-ADD service\ "c:\inetpub\wwwroot"
+# Metadata indicating an image maintainer.
+MAINTAINER jshelton@contoso.com
+
+# Uses dism.exe to install the IIS role.
+RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
+
+# Creates an HTML file and adds content to this file.
+RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
+
+# Sets a command or process that will run each time a container is run from the new image.
+CMD [ "cmd" ]
