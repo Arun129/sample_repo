@@ -1,4 +1,4 @@
-FROM microsoft/mssql-server-windows-express
+FROM microsoft/windowsservercore
 RUN powershell -Command Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ENV ACCEPT_EULA=Y
