@@ -11,7 +11,7 @@ RUN powershell -NoProfile -Command \
 RUN powershell -NoProfile -Command \
     Import-module IISAdministration; \
     New-Website -Name "testapp" -PhysicalPath C:\testapp -ApplicationPool DefaultAppPool -Port 80
-ADD testapp/ /testapp
+
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
