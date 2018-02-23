@@ -1,16 +1,33 @@
-FROM microsoft/aspnetcore-build:2.0 AS build-env
+FROM microsoft/dotnet:2.0-sdk AS build
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
-COPY *.csproj ./
+COPY *.sln .
+COPY dotnetapp/*.csproj ./dotnetapp/
+COPY utils/*.csproj ./utils/
+COPY tests/*.csproj ./tests/
 RUN dotnet restore
 
-# copy everything else and build
-COPY . ./
-RUN dotnet publish -c Release -o out
+# copy and build everything else
+COPY dotnetapp/. ./dotnetapp/
+COPY utils/. ./utils/
+COPY tests/. ./tests/
 
-# build runtime image
-FROM microsoft/aspnetcore:2.0
+RUN dotnet build
+
+FROM build AS testrunner
+WORKDIR /app/tests
+ENTRYPOINT ["dotnet", "test","--logger:trx"]
+
+FROM build AS test
+WORKDIR /app/tests
+RUN dotnet test
+
+FROM test AS publish
+WORKDIR /app/dotnetapp
+RUN dotnet publish -o out
+
+FROM microsoft/dotnet:2.0-runtime AS runtime
 WORKDIR /app
-COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+COPY --from=publish /app/dotnetapp/out ./
+ENTRYPOINT ["dotnet", "dotnetapp.dll"]
