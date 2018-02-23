@@ -20,7 +20,6 @@ ENV attach_dbs "[]"
 ENV ACCEPT_EULA _
 
 ENV sql_express_download_url "https://go.microsoft.com/fwlink/?linkid=829176"
-COPY start.ps1 /
 WORKDIR /
 	
 RUN Invoke-WebRequest -Uri $env:sql_express_download_url -OutFile sqlexpress.exe ; \
