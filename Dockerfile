@@ -1,7 +1,16 @@
-FROM microsoft/windowsservercore
-RUN powershell -Command Install-WindowsFeature -name Web-Server -IncludeManagementTools
+FROM microsoft/aspnetcore-build:2.0 AS build-env
+WORKDIR /app
 
-ENV ACCEPT_EULA=Y
-RUN powershell New-Website -Name "test" -PhysicalPath "c:\inetpub\wwwroot" -Port "80" -ApplicationPool DefaultAppPool
+# copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
 
-ADD service/ /inetpub/wwwroot
+# copy everything else and build
+COPY . ./
+RUN dotnet publish -c Release -o out
+
+# build runtime image
+FROM microsoft/aspnetcore:2.0
+WORKDIR /app
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "aspnetapp.dll"]
