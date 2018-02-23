@@ -3,8 +3,6 @@ FROM microsoft/aspnet
 RUN mkdir C:\testapp
 RUN mkdir C:\SQLServer
 
-ADD https://github.com/Microsoft/iis-docker/blob/master/windowsservercore/ServiceMonitor.exe?raw=true /testapp/ServiceMonitor.exe
-
 ADD service/ /SQLServer
 RUN powershell -NoProfile -Command \
     Import-module IISAdministration; \
