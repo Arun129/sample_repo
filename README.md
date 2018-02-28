@@ -55,7 +55,7 @@ See the following example of how to get the IP address of a running Windows cont
 C:\git\dotnet-docker-samples\aspnetapp>docker exec aspnetcore_sample ipconfig
 
 Windows IP Configuration
-
+demo edit
 
 Ethernet adapter Ethernet:
 
